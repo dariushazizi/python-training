@@ -123,4 +123,3 @@ user2 = Admin('Reza', 'jafari', 25 , 'tehran')
 user2.adding_right('ordering pizza by the visa card of user3')
 user2.describe_user()
 user2.show_privileges()
-        
