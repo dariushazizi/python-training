@@ -61,14 +61,46 @@ for item in names_list:
 path.write_text(name_content)
 
 # Addition for exceptions:
-number1 = input('add first number: ')
-number2 = input('add second number: ')
-try:
-    check = int(number1) + int(number2)
-except:
-    print('only numbers are accepted! you added a string!')
-else:
-    number = ''
-    number += number1
-    number += number2
-    print (number)
+#quite the while def:
+def quit_while(exit_name):
+    return exit_name != 'q'
+
+while True:
+    number1 = input('add first number: (type q for quite) ')
+    if not quit_while(number1):
+        break
+    number2 = input('add second number: (type q for quite) ')
+    if not quit_while(number2):
+        break
+    try:
+        check = int(number1) + int(number2)
+    except:
+        print('only numbers are accepted! you added a string!')
+    else:
+        number = ''
+        number += number1
+        number += number2
+        print (number)
+        
+while True:
+    active = ''
+    while True:
+        chosen_file = input('cats or dogs? (type "q" for exit)')
+        if not quit_while(chosen_file):
+            print('exiting the program.')
+            active = 'q'
+            break
+        if chosen_file == 'dogs' or chosen_file == 'cats':
+            break
+        else:
+            print('just write one of the words "cats" or "dogs"')
+    if not quit_while(active):
+        break
+    path = Path(f'{chosen_file}.txt')
+    try:
+        content = path.read_text()
+        print(content)
+        break
+    except FileNotFoundError:
+        print(f'the {path} file does not exist!')
+        continue
